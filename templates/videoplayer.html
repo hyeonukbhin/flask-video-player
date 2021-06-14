@@ -10,9 +10,34 @@
   <body>
     <section class="container">
       <div class="video-container col-md-12">
-        <div class="url"> {{ url }}</div>
+<!--        <div class="url"> {{ url }}</div>-->
+        <div class="url"> Local</div>
 
         <video class="video-js vjs-default-skin" id="video-1" src="{{ url }}" type="video/mp4">
+          <!--<source src="{{ url }}">-->
+          <!--<source src="http://iurevych.github.com/Flat-UI-videos/big_buck_bunny.mp4" type="video/mp4">-->
+        </video>
+
+      </div>
+    </section>
+        <section class="container">
+      <div class="video-container col-md-12">
+<!--        <div class="url"> {{ url }}</div>-->
+        <div class="url"> NAS</div>
+
+        <video class="video-js vjs-default-skin" id="video-2" src="{{ url }}" type="video/mp4">
+          <!--<source src="{{ url }}">-->
+          <!--<source src="http://iurevych.github.com/Flat-UI-videos/big_buck_bunny.mp4" type="video/mp4">-->
+        </video>
+
+      </div>
+    </section>
+        <section class="container">
+      <div class="video-container col-md-12">
+<!--        <div class="url"> {{ url }}</div>-->
+        <div class="url"> Google Firebase</div>
+
+        <video class="video-js vjs-default-skin" id="video-3" src="{{ url }}" type="video/mp4">
           <!--<source src="{{ url }}">-->
           <!--<source src="http://iurevych.github.com/Flat-UI-videos/big_buck_bunny.mp4" type="video/mp4">-->
         </video>
@@ -65,5 +90,88 @@
         });
       });
     </script>
+    <script type='text/javascript'>
+      var video = videojs("video-2", {
+        autoplay: true,
+        preload: true,
+        controls: true,
+        aspectRatio: '16:9',
+        playbackRates: [0.7, 1, 1.15, 1.25, 1.5, 2]
+      });
+      video.ready(function() {
+        this.hotkeys({
+          volumeStep: 0.1,
+          seekStep: 5,
+          enableModifiersForNumbers: true,
+          alwaysCaptureHotkeys: true,
+          customKeys: {
+            speedUp: {
+              key: function(event) {
+                // Toggle something with shift >
+                return (event.shiftKey && event.which === 190);
+              },
+              handler: function(player, options, event) {
+                var p = player.playbackRate();
+                var list = player.options_.playbackRates;
+                if(to = list[list.indexOf(p) + 1] ) player.playbackRate(to)
+              }
+            },
+            speedDown: {
+              key: function(event) {
+                // Toggle something with shift <
+                return (event.shiftKey && event.which === 188);
+              },
+              handler: function(player, options, event) {
+                var p = player.playbackRate();
+                var list = player.options_.playbackRates;
+                if(to = list[list.indexOf(p) - 1] ) player.playbackRate(to)
+              }
+            }
+          }
+        });
+      });
+    </script>
+    <script type='text/javascript'>
+      var video = videojs("video-3", {
+        autoplay: true,
+        preload: true,
+        controls: true,
+        aspectRatio: '16:9',
+        playbackRates: [0.7, 1, 1.15, 1.25, 1.5, 2]
+      });
+      video.ready(function() {
+        this.hotkeys({
+          volumeStep: 0.1,
+          seekStep: 5,
+          enableModifiersForNumbers: true,
+          alwaysCaptureHotkeys: true,
+          customKeys: {
+            speedUp: {
+              key: function(event) {
+                // Toggle something with shift >
+                return (event.shiftKey && event.which === 190);
+              },
+              handler: function(player, options, event) {
+                var p = player.playbackRate();
+                var list = player.options_.playbackRates;
+                if(to = list[list.indexOf(p) + 1] ) player.playbackRate(to)
+              }
+            },
+            speedDown: {
+              key: function(event) {
+                // Toggle something with shift <
+                return (event.shiftKey && event.which === 188);
+              },
+              handler: function(player, options, event) {
+                var p = player.playbackRate();
+                var list = player.options_.playbackRates;
+                if(to = list[list.indexOf(p) - 1] ) player.playbackRate(to)
+              }
+            }
+          }
+        });
+      });
+    </script>
+
   </body>
 </html>
